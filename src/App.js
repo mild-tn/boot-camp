@@ -3,12 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './component/Navbar'
 import TextBox from './component/TextBox'
-import Parallax from 'react-springy-parallax'
-import PicPara from './component/Parallax'
-import Section from './component/Section'
+import Card from './component/Card'
+
 
 const Text = ['CARTOONS', 'BRANDER', 'WEB & APP']
 
+const Topic =(prop)=>['OUR MAIN SERVICES','OUR MAIN SERVICES']
 
 class App extends Component {
   handleEvent = e => {
@@ -34,52 +34,17 @@ class App extends Component {
     if (this.state.position >= 3) {
       this.setState({ position: 0 })
     }
-    const styles = {
-      fontFamily: 'Menlo-Regular, Menlo, monospace',
-      fontSize: 14,
-      lineHeight: '10px',
-      color: 'white',
-      display: 'flex', alignItems: 'center', justifyContent: 'center'
-    }
     return (
       <React.Fragment>
-        <Parallax ref="parallax" pages={4}>
-        <Navbar />
-          <Parallax.Layer offset={0} speed={1} style={{ backgroundColor: 'transparent' }} />
-          <Parallax.Layer offset={1} speed={1} style={{ backgroundColor: 'transparent' }} />
-          <Parallax.Layer offset={2} speed={1} style={{ backgroundColor: 'transparent' }} />
-          <Parallax.Layer
-            offset={0}
-            speed={0.5}
-            style={styles}
-            onClick={() => this.refs.parallax.scrollTo(1)}>
-          </Parallax.Layer>
-          <div className="App">
-            {/* <PicPara/> */}
-            <TextBox text={Text[this.state.position]}/>
-          <Section/>
-          </div>
-          <Parallax.Layer
-            offset={1}
-            speed={-0.1}
-            style={styles}
-            onClick={() => this.refs.parallax.scrollTo(2)}>
-      </Parallax.Layer>
-          <Parallax.Layer
-            offset={2}
-            speed={0.5}
-            style={styles}
-            onClick={() => this.refs.parallax.scrollTo(0)}>
-            The end.
-      </Parallax.Layer>
-      <Parallax.Layer
-            offset={2}
-            speed={0.5}
-            style={styles}
-            onClick={() => this.refs.parallax.scrollTo(0)}>
-            The end.
-      </Parallax.Layer>
-        </Parallax>
+        <div className="App">
+        <div className="row">
+        <div className="col-12">
+          <Navbar className="sticky-top"/>
+          <TextBox text={Text[this.state.position]} />
+          <Card/>
+        </div>
+        </div>
+        </div>
       </React.Fragment>
     );
   }
